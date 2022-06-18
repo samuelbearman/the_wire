@@ -7,6 +7,7 @@ Simple C2 written in C#. Only meant for learning purposes. Dont use for bad guy 
 - Binary patching
 - Custom Web Dashboard
 - Backend database storage
+- AV Scan
 
 ## Publishing Implant
 
