@@ -66,7 +66,7 @@ public class Program
                 });
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             throw;
         }

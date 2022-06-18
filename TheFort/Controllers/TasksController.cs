@@ -1,6 +1,7 @@
 using BackOffice.Models;
 using LiteDB;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using TheFort.Services;
 
 namespace TheFort.Controllers
@@ -10,9 +11,12 @@ namespace TheFort.Controllers
     public class TasksController : ControllerBase
     {
         private readonly WireTaskQueue _queue;
-        public TasksController(WireTaskQueue queue)
+        private readonly FortConfig _config;
+
+        public TasksController(WireTaskQueue queue, IOptions<FortConfig> config)
         {
             _queue = queue;
+            _config = config.Value;
         }
 
         [HttpGet]
@@ -34,7 +38,7 @@ namespace TheFort.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] WireResponse response)
         {
-            using (var db = new LiteDatabase("/home/sam/db/fort.db"))
+            using (var db = new LiteDatabase(_config.DBPath))
             {
                 var col = db.GetCollection<WireResponse>("wireResponses");
                 col.Insert(response);
@@ -47,7 +51,7 @@ namespace TheFort.Controllers
         {
             var newTask = new WireTask() { Id = Guid.NewGuid(), Command = command.Command, Args = command.Args };
             _queue.Queue.Enqueue(newTask);
-            using (var db = new LiteDatabase("/home/sam/db/fort.db"))
+            using (var db = new LiteDatabase(_config.DBPath))
             {
                 var col = db.GetCollection<WireTask>("wireTasks");
                 col.Insert(newTask);

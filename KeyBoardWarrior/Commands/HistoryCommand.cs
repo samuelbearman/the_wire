@@ -16,7 +16,7 @@ namespace KeyBoardWarrior.Commands
             var result = await client.GetFromJsonAsync<List<WireResponse>>("http://localhost:5070/history/get-all");
             foreach (var response in result)
             {
-                console.Output.WriteLine($"Id: {response.Id}\nOutput: \n\n {response.Output}\n");
+                console.Output.WriteLine($"Id: {response.Id}\nOutput: \n\n{response.Output}\n");
             }
         }
     }

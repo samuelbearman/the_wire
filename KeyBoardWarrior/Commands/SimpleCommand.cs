@@ -18,7 +18,7 @@ namespace KeyBoardWarrior.Commands
         {
             var client = new HttpClient();
 
-            var result = await client.PostAsJsonAsync("http://localhost:5070/tasks/new-task", new {command = Command, args = Arguments});
+            await client.PostAsJsonAsync("http://localhost:5070/tasks/new-task", new {command = Command, args = Arguments});
         }
     }
 }
