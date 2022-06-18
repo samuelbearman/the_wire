@@ -1,0 +1,30 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Snitch",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-snitch",
+            "program": "${workspaceFolder}/Snitch/bin/Debug/net6.0/Snitch.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Snitch",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Debug TheFort",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-thefort",
+            "program": "${workspaceFolder}/TheFort/bin/Debug/net6.0/TheFort.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/TheFort",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+    ]
+}
